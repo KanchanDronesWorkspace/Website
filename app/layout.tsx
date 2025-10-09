@@ -4,6 +4,7 @@ import { Geist_Mono } from "next/font/google"
 
 import { Header } from "@/components/header"
 import "./globals.css"
+import { Toaster } from "@/components/ui/sonner"
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={`${geistMono.variable} antialiased`} suppressHydrationWarning>
         <Header />
         {children}
+        <Toaster />
       </body>
     </html>
   )
