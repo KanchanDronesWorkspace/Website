@@ -6,6 +6,8 @@ import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Textarea } from "./ui/textarea"
 import { useState } from "react"
+import { toast } from "sonner"
+import axios from "axios"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -14,10 +16,98 @@ export function ContactSection() {
     company: "",
     projectDetails: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+
+    const loadingToastId = toast.loading("Sending your message...", {
+      description: "Please wait while we process your request.",
+    })
+
+    try {
+      if (!formData.fullName.trim() || !formData.email.trim() || !formData.projectDetails.trim()) {
+        throw new Error("Please fill in all required fields")
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(formData.email)) {
+        throw new Error("Please enter a valid email address")
+      }
+
+      await axios.post(process.env.NEXT_PUBLIC_FORMSPREE_URL!, {
+        name: formData.fullName,
+        email: formData.email,
+        company: formData.company,
+        message: formData.projectDetails,
+      }, {
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+      })
+
+      toast.dismiss(loadingToastId)
+      toast.success("Message sent successfully!", {
+        description: "Thank you for contacting us. We'll get back to you soon.",
+        duration: 5000,
+      })
+
+      setFormData({
+        fullName: "",
+        email: "",
+        company: "",
+        projectDetails: "",
+      })
+
+    } catch (error) {
+      toast.dismiss(loadingToastId)
+
+      if (axios.isAxiosError(error)) {
+        let errorMessage = "Failed to send message"
+
+        if (error.response) {
+          const status = error.response.status
+          const data = error.response.data
+
+          switch (status) {
+            case 400:
+              errorMessage = "Invalid form data. Please check your inputs."
+              break
+            case 429:
+              errorMessage = "Too many requests. Please try again later."
+              break
+            case 500:
+              errorMessage = "Server error. Please try again later."
+              break
+            default:
+              errorMessage = `Error ${status}: ${data?.message || data?.error || "Unknown server error"}`
+          }
+        } else if (error.request) {
+          errorMessage = "Network error. Please check your connection and try again."
+        } else {
+          errorMessage = error.message || "An unexpected error occurred"
+        }
+
+        toast.error("Failed to send message", {
+          description: errorMessage,
+          duration: 6000,
+        })
+      } else if (error instanceof Error) {
+        toast.error("Failed to send message", {
+          description: error.message,
+          duration: 6000,
+        })
+      } else {
+        toast.error("An unexpected error occurred", {
+          description: "Please try again or contact us directly if the problem persists.",
+          duration: 6000,
+        })
+      }
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -98,8 +188,8 @@ export function ContactSection() {
             />
           </div>
 
-          <Button type="submit" className="w-full">
-            Send Message
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
         </form>
       </div>

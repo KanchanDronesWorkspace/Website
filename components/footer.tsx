@@ -19,7 +19,7 @@ export function Footer() {
         </nav>
 
         <div className="text-center font-mono text-sm text-foreground/60">
-          © {currentYear} Kanchan Drones. All rights reserved. | Aerial Mapping Redefined
+          © {currentYear} Kanchan Drones | <a href="mailto:info@kanchandrones.com">info@kanchandrones.com</a> | All rights reserved
         </div>
       </div>
     </footer>
