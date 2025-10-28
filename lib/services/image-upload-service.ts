@@ -1,10 +1,5 @@
 import { supabase } from '@/lib/supabase/client'
-
-export interface ImageUploadResult {
-  success: boolean
-  url?: string
-  error?: string
-}
+import type { ImageUploadResult } from '@/lib/types/interfaces'
 
 export class ImageUploadService {
   static async uploadImage(file: File, folder: string = 'blog-images'): Promise<ImageUploadResult> {
