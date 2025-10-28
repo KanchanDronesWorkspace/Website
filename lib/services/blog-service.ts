@@ -4,11 +4,25 @@ import type {
   BlogFormData,
   PaginatedResponse, 
 } from '@/lib/types/blog-management'
+import { 
+  createBlogSchema, 
+  updateBlogSchema, 
+  validateWithZod,
+  type CreateBlogInput,
+  type UpdateBlogInput,
+} from '@/lib/schemas/validation'
 
 export class BlogService {
   static async createBlog(blogData: BlogFormData, authorId: string): Promise<Blog> {
     try {
-      const slug = blogData.title
+      const validation = validateWithZod(createBlogSchema, { ...blogData, author_id: authorId })
+      if (!validation.success) {
+        throw new Error(`Validation failed: ${validation.error}`)
+      }
+
+      const validatedData = validation.data as CreateBlogInput
+
+      const slug = validatedData.title
         .toLowerCase()
         .replace(/[^a-z0-9\s-]/g, '')
         .replace(/\s+/g, '-')
@@ -17,9 +31,13 @@ export class BlogService {
       const { data, error } = await supabase
         .from('blogs')
         .insert({
-          ...blogData,
+          title: validatedData.title,
+          content: validatedData.content,
+          cover_image_url: validatedData.cover_image_url || '',
+          excerpt: validatedData.excerpt || '',
+          tags: validatedData.tags,
           slug,
-          author_id: authorId,
+          author_id: validatedData.author_id,
           status: 'draft'
         })
         .select(`
@@ -38,6 +56,13 @@ export class BlogService {
   }
   static async updateBlog(blogId: string, blogData: Partial<BlogFormData>, userId: string): Promise<Blog> {
     try {
+      const validation = validateWithZod(updateBlogSchema, { id: blogId, ...blogData })
+      if (!validation.success) {
+        throw new Error(`Validation failed: ${validation.error}`)
+      }
+
+      const validatedData = validation.data as UpdateBlogInput
+
       const { data: existingBlog } = await supabase
         .from('blogs')
         .select('author_id')
@@ -58,12 +83,28 @@ export class BlogService {
         throw new Error('Unauthorized to update this blog')
       }
 
+      const updateData: any = {
+        updated_at: new Date().toISOString()
+      }
+
+      if (validatedData.title) {
+        updateData.title = validatedData.title
+        updateData.slug = validatedData.title
+          .toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .trim()
+      }
+
+      if (validatedData.content !== undefined) updateData.content = validatedData.content
+      if (validatedData.cover_image_url !== undefined) updateData.cover_image_url = validatedData.cover_image_url
+      if (validatedData.excerpt !== undefined) updateData.excerpt = validatedData.excerpt
+      if (validatedData.tags !== undefined) updateData.tags = validatedData.tags
+      if (validatedData.status) updateData.status = validatedData.status
+
       const { data, error } = await supabase
         .from('blogs')
-        .update({
-          ...blogData,
-          updated_at: new Date().toISOString()
-        })
+        .update(updateData)
         .eq('id', blogId)
         .select(`
           *,
