@@ -4,6 +4,9 @@ import { Geist_Mono } from "next/font/google"
 
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
+import { AuthProvider } from "@/lib/contexts/auth-context"
+import { NotificationProvider } from "@/lib/contexts/notification-context"
+import AuthGuard from "@/components/auth/auth-guard"
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -27,8 +30,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistMono.variable} antialiased`} suppressHydrationWarning>
-        {children}
-        <Toaster />
+        <AuthProvider>
+          <NotificationProvider>
+            <AuthGuard>
+              {children}
+            </AuthGuard>
+            <Toaster />
+          </NotificationProvider>
+        </AuthProvider>
       </body>
     </html>
   )
