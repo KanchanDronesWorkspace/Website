@@ -180,6 +180,40 @@ export class BlogService {
       throw new Error('Failed to fetch blog')
     }
   }
+
+  static async getBlogBySlug(slug: string): Promise<Blog | null> {
+    try {
+      const { data, error } = await supabase
+        .from('blogs')
+        .select(`
+          *,
+          author:users!blogs_author_id_fkey(*),
+          approver:users!blogs_approved_by_fkey(*)
+        `)
+        .eq('slug', slug)
+        .eq('status', 'published')
+        .single()
+
+      if (error) {
+        if (error.code === 'PGRST116') return null
+        throw error
+      }
+
+      if (data) {
+        await supabase
+          .from('blogs')
+          .update({ views_count: (data.views_count || 0) + 1 })
+          .eq('id', data.id)
+
+        data.views_count = (data.views_count || 0) + 1
+      }
+
+      return data as Blog
+    } catch (error) {
+      console.error('Error fetching blog by slug:', error)
+      throw new Error('Failed to fetch blog')
+    }
+  }
   static async getPublishedBlogs(page: number = 1, limit: number = 10): Promise<PaginatedResponse<Blog>> {
     try {
       const offset = (page - 1) * limit
