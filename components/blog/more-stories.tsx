@@ -1,11 +1,11 @@
 import { PostPreview } from "@/components/blog/post-preview";
-import { BlogPost } from "@/lib/static-blog-data";
+import { Blog } from "@/lib/types/blog-management";
 
 export function MoreStories({
   morePosts,
   title,
 }: {
-  morePosts: BlogPost[];
+  morePosts: Blog[];
   title: React.ReactNode;
 }) {
   return (
@@ -15,7 +15,7 @@ export function MoreStories({
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
         {morePosts.map((post) => {
-          return <PostPreview key={post._id} {...post} />;
+          return <PostPreview key={post.id} {...post} />;
         })}
       </div>
     </section>

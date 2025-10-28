@@ -24,7 +24,7 @@ export default function BlogLayout({
   return (
     <html lang="en">
       <body className={`${geistMono.variable} antialiased`} suppressHydrationWarning>
-       <BlogHeader />{/* No header on blog pages - completely clean layout */}
+       <BlogHeader />
         {children}
         <Footer />
         <Toaster />
