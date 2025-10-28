@@ -25,7 +25,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [needsAvatarUpload, setNeedsAvatarUpload] = useState(false)
 
   useEffect(() => {
-    // Get initial session
     const getInitialSession = async () => {
       try {
         const sessionResult = await AuthService.getSession()
@@ -39,10 +38,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           const userResult = await AuthService.getCurrentUser()
           if (!userResult.success || userResult.error) {
             console.error('Error getting user profile:', userResult.error)
-            // Don't set user if there's an error
           } else {
             setUser(userResult.data)
-            // Check if user needs to upload avatar
             setNeedsAvatarUpload(!userResult.data?.avatar_uploaded)
           }
         }
@@ -55,7 +52,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     getInitialSession()
 
-    // Subscribe to auth state changes
     const { data: { subscription } } = AuthService.onAuthStateChange((user) => {
       setUser(user)
       setLoading(false)
@@ -78,11 +74,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return { success: false, error: result.error?.message }
       }
       
-      // Get user profile after successful sign in
       const userResult = await AuthService.getCurrentUser()
       if (userResult.success && userResult.data) {
         setUser(userResult.data)
-        // Check if user needs to upload avatar
         setNeedsAvatarUpload(!userResult.data?.avatar_uploaded)
       }
       
@@ -165,7 +159,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
       
       setUser(result.data)
-      // Update avatar upload status if avatar was uploaded
       if (updates.avatar_uploaded !== undefined) {
         setNeedsAvatarUpload(!updates.avatar_uploaded)
       }
@@ -203,7 +196,6 @@ export function useAuth() {
   return context
 }
 
-// Higher-order component for protected routes
 export function withAuth<P extends object>(
   Component: React.ComponentType<P>,
   requiredRole?: 'admin' | 'employee'
