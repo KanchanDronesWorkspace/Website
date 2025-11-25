@@ -2,9 +2,11 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist_Mono } from "next/font/google"
 
-import { Header } from "@/components/header"
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
+import { AuthProvider } from "@/lib/contexts/auth-context"
+import { NotificationProvider } from "@/lib/contexts/notification-context"
+import AuthGuard from "@/components/auth/auth-guard"
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -14,6 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Kanchan Drones",
   description: "Aerial Mapping Redefined - Precision. Innovation. Excellence.",
+  icons: {
+    icon: [`/kd.ico`],
+    shortcut: [`/kd.ico`],
+  },
 }
 
 export default function RootLayout({
@@ -24,9 +30,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistMono.variable} antialiased`} suppressHydrationWarning>
-        <Header />
-        {children}
-        <Toaster />
+        <AuthProvider>
+          <NotificationProvider>
+            <AuthGuard>
+              {children}
+            </AuthGuard>
+            <Toaster />
+          </NotificationProvider>
+        </AuthProvider>
       </body>
     </html>
   )
