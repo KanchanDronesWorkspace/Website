@@ -7,13 +7,13 @@ import { useEffect, useState } from "react"
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false)
 
-  const navItems = ["Home", "Blog", "Services", "Features", "Contact"]
+  const navItems = ["Home", "Blog", "Services", "Features", "Work", "Contact"]
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 400)
     }
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll",   handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -32,7 +32,7 @@ export const Header = () => {
           {navItems.map((item) => (
             <Link
               className="uppercase inline-block font-mono text-foreground/60 hover:text-foreground/100 duration-150 transition-colors ease-out"
-              href={`${item.toLowerCase() === "blog" ? "/blog" : `#${item.toLowerCase()}`}`}
+              href={`${item.toLowerCase() === "blog" ? "/blog" : item.toLowerCase() === "work" ? "/work" : `#${item.toLowerCase()}`}`}
               key={item}
             >
               {item}
