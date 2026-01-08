@@ -78,7 +78,7 @@ export default function SignUpPage() {
     <main className="min-h-screen bg-background flex items-center justify-center px-5 py-12">
       <div className="w-full max-w-5xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Hero Content */}
+         
           <div className="hidden lg:block space-y-8">
             <div>
               <h1 className="text-7xl font-bold tracking-tighter leading-tight mb-6 bg-gradient-to-r from-primary via-primary/90 to-accent bg-clip-text text-transparent">
@@ -128,7 +128,6 @@ export default function SignUpPage() {
             </div>
           </div>
 
-          {/* Right Column - Form */}
           <div className="w-full">
             <div className="lg:hidden mb-8">
               <h1 className="text-5xl font-bold tracking-tighter leading-tight mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
