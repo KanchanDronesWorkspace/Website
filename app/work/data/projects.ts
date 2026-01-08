@@ -7,8 +7,9 @@ export interface Project {
     location: string;
     date: string;
     description: string;
-    modelFile: string;  
-    modelUrl: string;  
+    modelFile: string;
+    modelUrl: string;
+    thumbnail: string;
     category: 'construction' | 'heritage' | 'landscape' | 'infrastructure' | 'object';
     stats: {
         images: string;
@@ -32,6 +33,7 @@ export const projects: Project[] = [
         description: 'High-fidelity 3D reconstruction of a heritage temple site using 2D Gaussian Splatting technology.',
         modelFile: 'temple_2dgs.ply',
         modelUrl: buildModelUrl('temple_2dgs.ply'),
+        thumbnail: '/assets/temple-tn.png',
         category: 'heritage',
         stats: {
             images: '300+',
@@ -49,6 +51,7 @@ export const projects: Project[] = [
         description: 'Detailed 3D scan of a stunning red rock formation showcasing natural geological features.',
         modelFile: 'red_rocks_cleaned.ply',
         modelUrl: buildModelUrl('red_rocks_cleaned.ply'),
+        thumbnail: '/assets/rocks-tn.png',
         category: 'landscape',
         stats: {
             images: '450+',
@@ -66,6 +69,7 @@ export const projects: Project[] = [
         description: 'Precision 3D capture of a decorative flower pot demonstrating close-range scanning capabilities.',
         modelFile: 'flower-pot.ply',
         modelUrl: buildModelUrl('flower-pot.ply'),
+        thumbnail: '/assets/flowerpot-tn.png',
         category: 'object',
         stats: {
             images: '120+',
@@ -75,6 +79,7 @@ export const projects: Project[] = [
         }
     },
 ];
+
 export function getProjectBySlug(slug: string): Project | undefined {
     return projects.find(p => p.slug === slug);
 }

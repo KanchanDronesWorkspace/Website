@@ -3,10 +3,12 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronDown, Play, ExternalLink } from "lucide-react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
+import { WorkBackground } from "@/components/work-background";
 import { projects } from "./data/projects";
 
 export default function WorkPage() {
@@ -14,7 +16,14 @@ export default function WorkPage() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen relative">
+      <WorkBackground />
+
+      <div className="fixed inset-0 -z-5 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/3 rounded-full blur-[150px]" />
+        <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-primary/2 rounded-full blur-[120px]" />
+      </div>
+
       <Header />
 
       <section className="pt-24 md:pt-32 pb-12 md:pb-16 px-4 md:px-8">
@@ -121,7 +130,7 @@ export default function WorkPage() {
       </section>
 
       <section className="px-4 md:px-8 py-16 md:py-24">
-        <div className="container max-w-6xl mx-auto">
+        <div className="container max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -131,7 +140,7 @@ export default function WorkPage() {
             Available <span className="italic font-light">Models</span>
           </motion.h2>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -141,31 +150,56 @@ export default function WorkPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Link href={`/work/${project.slug}`}>
-                  <div className="group relative p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-primary/30 transition-all duration-300 cursor-pointer h-full">
-                    
+                  <div className="group relative rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-primary/30 transition-all duration-300 cursor-pointer h-full overflow-hidden">
+                    <div className="relative w-full aspect-video overflow-hidden">
+                      <Image
+                        src={project.thumbnail}
+                        alt={project.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
 
-                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-primary transition-colors">
-                      {project.name}
-                    </h3>
-                    <p className="text-white/40 text-sm font-mono mb-4">
-                      {project.location}
-                    </p>
-                    <p className="text-white/50 text-sm leading-relaxed mb-6">
-                      {project.description}
-                    </p>
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-16 h-16 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/40 flex items-center justify-center">
+                          <Play
+                            className="w-6 h-6 text-primary ml-1"
+                            fill="currentColor"
+                          />
+                        </div>
+                      </div>
+                    </div>
 
-                    <div className="flex gap-4 text-xs font-mono">
-                      <div>
-                        <p className="text-primary">{project.stats.images}</p>
-                        <p className="text-white/30">Images</p>
-                      </div>
-                      <div>
-                        <p className="text-primary">{project.stats.points}</p>
-                        <p className="text-white/30">Points</p>
-                      </div>
-                      <div>
-                        <p className="text-primary">{project.stats.accuracy}</p>
-                        <p className="text-white/30">Accuracy</p>
+                    <div className="p-6 md:p-8">
+                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                        {project.name}
+                      </h3>
+                      <p className="text-white/40 text-sm font-mono mb-4">
+                        {project.location}
+                      </p>
+                      <p className="text-white/50 text-sm leading-relaxed mb-6">
+                        {project.description}
+                      </p>
+
+                      <div className="flex gap-6 text-sm font-mono">
+                        <div>
+                          <p className="text-primary font-bold">
+                            {project.stats.images}
+                          </p>
+                          <p className="text-white/30 text-xs">Images</p>
+                        </div>
+                        <div>
+                          <p className="text-primary font-bold">
+                            {project.stats.points}
+                          </p>
+                          <p className="text-white/30 text-xs">Points</p>
+                        </div>
+                        <div>
+                          <p className="text-primary font-bold">
+                            {project.stats.accuracy}
+                          </p>
+                          <p className="text-white/30 text-xs">Accuracy</p>
+                        </div>
                       </div>
                     </div>
 
