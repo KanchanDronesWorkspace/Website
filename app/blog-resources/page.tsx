@@ -93,10 +93,10 @@ export default function Page() {
         <section className="mx-auto px-5 ">
           <section className="max-w-7xl mx-auto">
             <Intro />
-            {/* Cool Empty State */}
+            
             <div className="text-center py-20">
               <div className="max-w-2xl mx-auto">
-                {/* Animated Drone Icon */}
+                
                 <div className="mb-8">
                   <div className="relative inline-block">
                     <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center animate-pulse">
@@ -110,9 +110,9 @@ export default function Page() {
                   </div>
                 </div>
                 
-                {/* Main Message */}
+                
                 <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  🚁 Ready for Takeoff!
+                  Ready for Takeoff!
                 </h2>
                 
                 <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
@@ -121,7 +121,6 @@ export default function Page() {
                   <span className="text-primary font-semibold">Stay tuned for incredible aerial insights!</span>
                 </p>
                 
-                {/* Feature Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                   <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
@@ -154,7 +153,6 @@ export default function Page() {
                   </div>
                 </div>
                 
-                {/* Call to Action */}
                 <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-8 rounded-2xl border border-primary/20">
                   <h3 className="text-2xl font-bold text-foreground mb-4">🎯 What's Coming Next?</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
@@ -177,7 +175,6 @@ export default function Page() {
                   </div>
                 </div>
                 
-                {/* Footer Message */}
                 <div className="mt-8">
                   <p className="text-muted-foreground text-sm">
                     Follow us for updates and be the first to read our latest content!

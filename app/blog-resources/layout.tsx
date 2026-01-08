@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist_Mono } from "next/font/google"
-import "@/app/blog/globals.css"
+import "@/app/blog-resources/globals.css"
 import { Toaster } from "@/components/ui/sonner"
 import { BlogHeader } from "@/components/blog/blog-header"
 import { Footer } from "@/components/footer"
