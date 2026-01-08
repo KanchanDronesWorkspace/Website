@@ -25,7 +25,6 @@ export const MobileMenu = ({ className }: MobileMenuProps) => {
     "Pricing",
   ];
 
-  // Map nav items to actual section IDs
   const sectionMap: Record<string, string> = {
     home: "home",
     solution: "services",
@@ -38,11 +37,8 @@ export const MobileMenu = ({ className }: MobileMenuProps) => {
     item: string
   ) => {
     const lowerItem = item.toLowerCase();
-
-    // Close menu first
     setIsOpen(false);
 
-    // Skip for page routes
     if (lowerItem === "resources" || lowerItem === "work") {
       return;
     }
@@ -51,7 +47,6 @@ export const MobileMenu = ({ className }: MobileMenuProps) => {
     const sectionId = sectionMap[lowerItem] || lowerItem;
 
     if (pathname === "/") {
-      // Same page - smooth scroll directly with a small delay for menu to close
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -59,7 +54,6 @@ export const MobileMenu = ({ className }: MobileMenuProps) => {
         }
       }, 150);
     } else {
-      // Different route - store target and navigate
       sessionStorage.setItem("scrollToSection", sectionId);
       router.push("/");
     }

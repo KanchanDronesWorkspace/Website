@@ -12,13 +12,7 @@ export const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const navItems = [
-    "Resources",
-    "Platform",
-    "Solution",
-    "Work",
-    "Pricing",
-  ];
+  const navItems = ["Resources", "Platform", "Solution", "Work", "Pricing"];
 
   const sectionMap: Record<string, string> = {
     solution: "services",
@@ -125,7 +119,7 @@ export const Header = () => {
             <Button size="sm">Login</Button>
           </Link>
         </nav>
-        <MobileMenu />
+        <MobileMenu className="ml-auto lg:hidden cursor-pointer" />
       </header>
     </div>
   );
