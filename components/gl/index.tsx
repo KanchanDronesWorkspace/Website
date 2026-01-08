@@ -50,7 +50,6 @@ export const GL = ({ hovering }: { hovering: boolean }) => {
           far: 300,
         }}
       >
-        {/* <Perf position="top-left" /> */}
         <color attach="background" args={["#000"]} />
         <Particles
           speed={speed}
