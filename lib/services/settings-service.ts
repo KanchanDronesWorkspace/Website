@@ -18,7 +18,7 @@ export class SettingsService {
 
       const defaultSettings: SystemSettings = {
         site_name: 'Kanchan Drones Blog',
-        site_description: 'Aerial Mapping Redefined - Precision. Innovation. Excellence.',
+        site_description: 'Spatial Intellegence Redefined - Precision. Innovation. Excellence.',
         default_blog_status: 'draft',
         posts_per_page: 10,
         require_avatar_upload: true,
@@ -82,7 +82,7 @@ export class SettingsService {
     try {
       const defaultSettings: SystemSettings = {
         site_name: 'Kanchan Drones Blog',
-        site_description: 'Aerial Mapping Redefined - Precision. Innovation. Excellence.',
+        site_description: 'Spatial Intellegence Redefined',
         default_blog_status: 'draft',
         posts_per_page: 10,
         require_avatar_upload: true,

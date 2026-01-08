@@ -7,9 +7,6 @@ interface Service {
   icon: string;
   title: string;
   description: string;
-  detailedDescription: string;
-  graphic: string;
-  useCase: string;
 }
 
 export function Services() {
@@ -19,60 +16,45 @@ export function Services() {
       icon: "🗺️",
       title: "Aerial Mapping",
       description: "High-resolution aerial mapping services.",
-      detailedDescription: "Aerial Mapping",
-      useCase: "",
-      graphic: "🗺️",
     },
     {
       id: "construction-management",
       icon: "🏗️",
       title: "Construction Management",
-      description: "Support for construction planning and oversight.",
-      detailedDescription: "Construction Management",
-      useCase: "",
-      graphic: "🏗️",
+      description: "Automated Volumetric Analysis.",
     },
     {
       id: "land-surveys-inspection",
       icon: "📐",
       title: "Land Surveys and Inspection",
       description: "Surveying and inspection services for land and sites.",
-      detailedDescription: "Land Surveys and Inspection",
-      useCase: "",
-      graphic: "🧭",
     },
     {
       id: "real-estate-tours",
       icon: "🏠",
       title: "Real Estate Tours and guide",
       description: "Guided tours and visuals for real estate.",
-      detailedDescription: "Real Estate Tours and guide",
-      useCase: "",
-      graphic: "🏠",
     },
     {
       id: "forensics-public-safety",
       icon: "🛡️",
       title: "Forensics and Public safety",
       description: "Services supporting forensics and public safety.",
-      detailedDescription: "Forensics and Public safety",
-      useCase: "",
-      graphic: "🛡️",
     },
     {
       id: "professional-consulting",
       icon: "💼",
-      title: "Professional Consulting - Whatever you need!",
-      description: "Flexible consulting tailored to your needs.",
-      detailedDescription: "Professional Consulting - Whatever you need!",
-      useCase: "",
-      graphic: "💼",
+      title: "Consulting",
+      description: "Flexible consulting tailored to your prooblem solutions.",
     },
   ];
 
   return (
-    <section id="services" className="py-20 md:py-32 relative bg-background">
-      <div className="container max-w-7xl">
+    <section id="services" className="py-20 md:py-32 relative bg-gradient-to-b from-muted/20">
+      <div className="container max-w-7xl relative z-10">
+        <div className="text-center mb-16 md:mb-24">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-sentient mb-6">Our Solution</h2>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7">
           {services.map((service) => (
             <article

@@ -214,7 +214,6 @@ function SettingsPage() {
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Hero Section */}
       <section className="mx-auto px-5 ">
         <section className="max-w-7xl mx-auto py-12">
           <div className="flex-col md:flex-row flex items-center md:justify-between mb-12">
@@ -236,10 +235,8 @@ function SettingsPage() {
         </section>
       </section>
 
-      {/* Content */}
       <section className="max-w-7xl mx-auto px-5 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Profile Picture Section */}
           <div className="lg:col-span-1 space-y-6">
             <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border border-border/50">
               <h2 className="text-xl font-semibold text-foreground mb-6">Profile Picture</h2>
@@ -290,7 +287,6 @@ function SettingsPage() {
               </div>
             </div>
 
-            {/* Account Security */}
             <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border border-border/50">
               <h2 className="text-xl font-semibold text-foreground mb-4">Account Security</h2>
               <div className="space-y-4">
@@ -331,13 +327,11 @@ function SettingsPage() {
             </div>
           </div>
 
-          {/* Settings Form */}
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border border-border/50">
               <h2 className="text-xl font-semibold text-foreground mb-6">Profile Information</h2>
               
               <div className="space-y-6">
-                {/* Basic Information */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="full_name" className="block text-sm font-medium text-foreground mb-3">
@@ -412,7 +406,6 @@ function SettingsPage() {
                   </div>
                 </div>
 
-                {/* Social Links */}
                 <div>
                   <h3 className="text-lg font-medium text-foreground mb-4">Social Links</h3>
                   <div className="space-y-4">

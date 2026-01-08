@@ -41,38 +41,36 @@ export function SettingsSection({
         </button>
       </div>
 
-      {/* Site Configuration */}
       <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border border-border/50">
         <h3 className="text-lg font-semibold text-foreground mb-4">Site Configuration</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <SettingInput
             label="Site Name"
             value={settings.site_name}
-            onChange={(value) => onSettingChange('site_name', value)}
+            onChange={(value: any) => onSettingChange('site_name', value)}
           />
           <SettingInput
             label="Site Description"
             value={settings.site_description}
-            onChange={(value) => onSettingChange('site_description', value)}
+            onChange={(value: any) => onSettingChange('site_description', value)}
           />
           <SettingSelect
             label="Default Blog Status"
             value={settings.default_blog_status}
             options={['draft', 'pending_approval', 'published']}
-            onChange={(value) => onSettingChange('default_blog_status', value)}
+            onChange={(value: any) => onSettingChange('default_blog_status', value)}
           />
           <SettingInput
             label="Posts Per Page"
             type="number"
             value={settings.posts_per_page}
-            onChange={(value) => onSettingChange('posts_per_page', parseInt(value))}
+            onChange={(value: any) => onSettingChange('posts_per_page', parseInt(value))}
             min={5}
             max={50}
           />
         </div>
       </div>
 
-      {/* Toggle Settings */}
       <ToggleSettingsGroup
         title="User Management"
         settings={[
@@ -126,7 +124,7 @@ export function SettingsSection({
             label="Maximum File Upload Size (MB)"
             type="number"
             value={settings.max_file_upload_size}
-            onChange={(value) => onSettingChange('max_file_upload_size', parseInt(value))}
+            onChange={(value: any) => onSettingChange('max_file_upload_size', parseInt(value))}
             min={1}
             max={50}
           />
@@ -168,7 +166,6 @@ export function SettingsSection({
         }
       />
 
-      {/* System Information */}
       <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border border-border/50">
         <h3 className="text-lg font-semibold text-foreground mb-4">System Information</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -183,7 +180,6 @@ export function SettingsSection({
         </div>
       </div>
 
-      {/* Action Buttons */}
       <div className="flex justify-end space-x-4">
         <button
           onClick={onReset}

@@ -273,7 +273,6 @@ function EditBlogPage() {
         </section>
       </section>
 
-      {/* Content */}
       <section className="max-w-7xl mx-auto px-5 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
