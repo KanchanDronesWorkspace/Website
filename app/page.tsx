@@ -9,23 +9,21 @@ import { Leva } from "leva"
 import { Header } from "@/components/header"
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
+import { AboutSection } from "@/components/about-us"
 
 export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-    // Reset CSS variables to main route values
     if (typeof window !== 'undefined') {
       const root = document.documentElement
       
-      // Reset to main route color scheme
       root.style.setProperty('--background', '#000000')
       root.style.setProperty('--foreground', '#ffffff')
       root.style.setProperty('--primary', '#FFC700')
       root.style.setProperty('--primary-foreground', '#ffffff')
       root.style.setProperty('--border', '#424242')
       
-      // Remove any blog-specific CSS variables
       root.style.removeProperty('--muted')
       root.style.removeProperty('--muted-foreground')
       root.style.removeProperty('--accent')
@@ -41,6 +39,7 @@ export default function Home() {
       <Hero />
       <WhyChoose />
       <Services />
+      <AboutSection />
       <ContactSection />
       <Footer />
       <Leva hidden />
