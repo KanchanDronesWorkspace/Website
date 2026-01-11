@@ -39,7 +39,7 @@ export default function WorkPage() {
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-sentient mb-6">
               Explore Our <br />
-              <span className="font-sentient">3D Reconstructions</span>
+              <span className="font-sentient not-italic">3D Reconstructions</span>
             </h1>
             <p className="text-white/50 font-mono text-sm md:text-base max-w-2xl mx-auto leading-relaxed mb-10">
               Select a project below to explore interactive 3D reconstructions
