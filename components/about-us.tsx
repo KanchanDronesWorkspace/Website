@@ -47,19 +47,19 @@ export function AboutSection() {
                 <span className="text-primary font-semibold">
                   deep-tech startup
                 </span>{" "}
-                incubated at <span className="text-foreground">IIT Delhi</span>,
-                with a core team comprising professionals from{" "}
+                From <span className="text-foreground">IIT Delhi</span>,
+                with core team from{" "}
                 <span className="text-foreground">
-                  UMD (University of Maryland, USA)
+                  IIT, UMD (University of Maryland, USA) and Boeing
                 </span>{" "}
                 and <span className="text-foreground">Boeing</span>. Our focus
                 is on advancing the{" "}
                 <span className="text-primary font-semibold">
-                  state of the art (SOTA)
+                  state of the art
                 </span>{" "}
                 in aerial photogrammetry, powered by our proprietary AI-driven
                 algorithms. By leveraging cutting-edge artificial intelligence,
-                we aim to deliver highly accurate, scalable, and innovative
+                we aim to deliver precise, scalable, and innovative
                 geospatial solutions.
               </p>
               <div className="absolute -bottom-4 -right-4 w-12 h-12 border-r-2 border-b-2 border-primary/30 rounded-br-lg" />
@@ -93,9 +93,9 @@ export function AboutSection() {
                     {partner.name}
                   </h3>
 
-                  <p className="font-mono text-xs text-foreground/50 text-center leading-relaxed">
+                  {/* <p className="font-mono text-xs text-foreground/50 text-center leading-relaxed">
                     {partner.description}
-                  </p>
+                  </p> */}
 
                   <div className="absolute inset-0 -z-10 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl">
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent rounded-xl" />
