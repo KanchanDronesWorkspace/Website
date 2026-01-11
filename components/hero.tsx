@@ -81,7 +81,7 @@ export function Hero() {
       <div className="pb-16 mt-auto text-center relative z-10 bg-gradient-to-b from-muted/80 to-transparent">
         <h1 className="text-7xl sm:text-6xl md:text-7xl font-sentient text-white">
           Spatial Intelligence <br />
-          <i className="font-sentient">Redefined</i>
+          <i className="font-sentient not-italic">Redefined</i>
         </h1>
         <p className="font-mono text-sm sm:text-base text-white/80 text-balance mt-4 max-w-[700px] mx-auto">
           Transform pixels into survey-grade spatial 3D models with AI insights.
