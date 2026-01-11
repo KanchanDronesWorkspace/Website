@@ -15,13 +15,13 @@ export function Services() {
       id: "aerial-mapping",
       icon: "🗺️",
       title: "Aerial Mapping",
-      description: "High-resolution aerial mapping services.",
+      description: "Transform your aerial imagery into actionable 3D maps.",
     },
     {
       id: "construction-management",
       icon: "🏗️",
       title: "Construction Management",
-      description: "Automated Volumetric Analysis.",
+      description: "Automate your construction site monitoring with volumetric analysis.",
     },
     {
       id: "land-surveys-inspection",
@@ -33,7 +33,7 @@ export function Services() {
       id: "real-estate-tours",
       icon: "🏠",
       title: "Real Estate Tours and guide",
-      description: "Guided tours and visuals for real estate.",
+      description: "3D tours and visuals for real estate.",
     },
     {
       id: "forensics-public-safety",
@@ -45,7 +45,7 @@ export function Services() {
       id: "professional-consulting",
       icon: "💼",
       title: "Consulting",
-      description: "Flexible consulting tailored to your prooblem solutions.",
+      description: "Flexible consulting tailored to your problem.",
     },
   ];
 
