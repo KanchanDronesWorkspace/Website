@@ -28,9 +28,9 @@ export function WhyChoose() {
                   </h3>
 
                   <p className="font-mono text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed md:leading-loose">
-                    Our AI Fusion Mapper™ combines raw pixels with our SOTA
+                    Our AI Fusion Mapper™ transforms raw pixels with our SOTA
                     photogrammetry algorithm to produce visually stunning 3D
-                    maps with unprecedented detail and accuracy.
+                    maps with the sharpest details and highest accuracy.
                   </p>
                 </div>
 
@@ -42,7 +42,7 @@ export function WhyChoose() {
               <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-transparent z-10 lg:block hidden" />
 
               <video
-                src="/assets/templesplat.mp4"
+                src="/assets/red_rock.mp4"
                 autoPlay
                 muted
                 loop
@@ -56,7 +56,7 @@ export function WhyChoose() {
 
           <div className="flex justify-center mt-8 md:mt-10">
             <Link href="/work">
-              <Button className="px-8">Try Other Works</Button>
+              <Button className="px-8">See Other Works</Button>
             </Link>
           </div>
 

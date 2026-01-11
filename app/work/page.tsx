@@ -39,12 +39,12 @@ export default function WorkPage() {
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-sentient mb-6">
               Explore Our <br />
-              <span className="font-light italic">3D Reconstructions</span>
+              <span className="font-sentient">3D Reconstructions</span>
             </h1>
             <p className="text-white/50 font-mono text-sm md:text-base max-w-2xl mx-auto leading-relaxed mb-10">
               Select a project below to explore interactive 3D reconstructions
-              created from our aerial drone surveys. Navigate through
-              high-fidelity Gaussian Splat renders with sub-centimeter accuracy.
+              created from aerial drone imagery. Navigate through
+              high-fidelity Gaussian Splat renders with higher precision.
             </p>
 
             <div className="relative inline-block w-full max-w-md mx-auto">
@@ -137,7 +137,7 @@ export default function WorkPage() {
             viewport={{ once: true }}
             className="text-2xl md:text-3xl font-sentient text-center mb-12"
           >
-            Available <span className="italic font-light">Models</span>
+            Models <span className="font-sentient">Available</span>
           </motion.h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -226,12 +226,12 @@ export default function WorkPage() {
               Ready to See Your Project in 3D?
             </h2>
             <p className="text-white/50 font-mono text-sm max-w-xl mx-auto mb-8">
-              Contact us today to discuss how our aerial mapping and 3D
-              reconstruction services can transform your next project.
+              Contact us today to discuss how our 3D mapping services can
+              transform your next project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/#contact">
-                <Button className="w-full sm:w-auto">Get Started</Button>
+                <Button className="w-full sm:w-auto">Contact us</Button>
               </Link>
               <Link href="/#services">
                 <Button className="w-full sm:w-auto bg-transparent border-white/30 hover:bg-white/5">
