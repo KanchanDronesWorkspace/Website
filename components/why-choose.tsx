@@ -5,10 +5,7 @@ import { Button } from "./ui/button";
 
 export function WhyChoose() {
   return (
-    <section
-      id="features"
-      className="py-20 md:py-32 relative bg-gradient-to-b from-muted"
-    >
+    <section id="features" className="py-20 md:py-32 relative bg-black">
       <div className="container relative z-10">
         <div className="text-center mb-16 md:mb-24">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-sentient mb-6">
