@@ -47,12 +47,12 @@ export function AboutSection() {
                 <span className="text-primary font-semibold">
                   deep-tech startup
                 </span>{" "}
-                From <span className="text-foreground">IIT Delhi</span>,
+                from <span className="text-foreground">IIT Delhi</span>,
                 with core team from{" "}
                 <span className="text-foreground">
-                  IIT, UMD (University of Maryland, USA) and Boeing
+                  IIT, UMD (University of Maryland, USA) and Boeing.
                 </span>{" "}
-                and <span className="text-foreground">Boeing</span>. Our focus
+                Our focus
                 is on advancing the{" "}
                 <span className="text-primary font-semibold">
                   state of the art
