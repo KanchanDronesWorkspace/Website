@@ -67,9 +67,9 @@ export function AboutSection() {
 
             <div className="flex items-center gap-4 mb-12">
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
-              <span className="font-mono text-xs text-foreground/40 uppercase tracking-widest">
+              {/* <span className="font-mono text-xs text-foreground/40 uppercase tracking-widest">
                 Our Partners
-              </span>
+              </span> */}
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" />
             </div>
 

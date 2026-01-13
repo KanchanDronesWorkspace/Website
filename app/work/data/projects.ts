@@ -30,7 +30,7 @@ export const projects: Project[] = [
         name: 'Temple 2DGS',
         location: 'Heritage Site',
         date: '2024',
-        description: 'High-fidelity 3D reconstruction of a heritage temple site using 2D Gaussian Splatting technology.',
+        description: 'High-fidelity 3D reconstruction of a heritage temple site.',
         modelFile: 'temple_2dgs.ply',
         modelUrl: buildModelUrl('temple_2dgs.ply'),
         thumbnail: '/assets/temple-tn.png',
