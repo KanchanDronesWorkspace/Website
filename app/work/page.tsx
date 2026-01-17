@@ -42,9 +42,7 @@ export default function WorkPage() {
               <span className="font-sentient not-italic">3D Reconstructions</span>
             </h1>
             <p className="text-white/50 font-mono text-sm md:text-base max-w-2xl mx-auto leading-relaxed mb-10">
-              Select a project below to explore interactive 3D reconstructions
-              created from aerial drone imagery. Navigate through
-              high-fidelity Gaussian Splat renders with higher precision.
+            Select a project below to explore interactive 3D reconstructions created from aerial drone imagery. Navigate through high-fidelity Gaussian Splats, created with highest precision.
             </p>
 
             <div className="relative inline-block w-full max-w-md mx-auto">
