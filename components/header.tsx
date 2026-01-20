@@ -12,7 +12,8 @@ export const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const navItems = ["Resources", "Platform", "Solution", "Work", "Pricing"];
+  // const navItems = ["Resources", "Platform", "Solution", "Work", "Pricing"];
+  const navItems = ["Platform", "Solution", "Work", "Pricing"]; 
 
   const sectionMap: Record<string, string> = {
     solution: "services",

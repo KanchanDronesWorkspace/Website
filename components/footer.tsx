@@ -10,7 +10,7 @@ export function Footer() {
 
   const footerItems = [
     "Home",
-    "Resources",
+    // "Resources",
     "Platform",
     "Solution",
     "Work",

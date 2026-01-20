@@ -18,7 +18,7 @@ export const MobileMenu = ({ className }: MobileMenuProps) => {
 
   const navItems = [
     "Home",
-    "Resources",
+    // "Resources",
     "Solution",
     "Platform",
     "Work",
