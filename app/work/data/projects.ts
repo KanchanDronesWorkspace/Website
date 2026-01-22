@@ -25,16 +25,16 @@ function buildModelUrl(filename: string): string {
 
 export const projects: Project[] = [
     {
-        id: 'temple',
-        slug: 'temple',
-        name: 'Temple 2DGS',
-        location: 'Heritage Site',
+        id: 'matrix-City',
+        slug: 'matrix-city',
+        name: 'Matrix City',
+        location: 'Urban Area',
         date: '2024',
-        description: 'High-fidelity 3D reconstruction of a heritage temple site.',
-        modelFile: 'temple_2dgs.ply',
-        modelUrl: buildModelUrl('temple_2dgs.ply'),
+        description: 'High-fidelity 3D reconstruction of a urban area.',
+        modelFile: 'SciArt_Cleaned_Thrice.ply',
+        modelUrl: buildModelUrl('SciArt_Cleaned_Thrice.ply'),
         thumbnail: '/assets/temple-tn.png',
-        category: 'heritage',
+        category: 'construction',
         stats: {
             images: '300+',
             points: '2.1M',
