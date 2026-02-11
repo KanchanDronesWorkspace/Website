@@ -116,7 +116,7 @@ export const Header = () => {
               {item}
             </Link>
           ))}
-          <Link href="/https://fusionmapper.kanchandrones.com">
+          <Link href="/">
             <Button size="sm">Login</Button>
           </Link> 
           {/* <a
