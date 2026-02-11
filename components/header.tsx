@@ -116,9 +116,17 @@ export const Header = () => {
               {item}
             </Link>
           ))}
-          <Link href="/https://fusionmapper.kanchandrones.com">
+          {/* <Link href="/https://fusionmapper.kanchandrones.com">
             <Button size="sm">Login</Button>
-          </Link>
+          </Link> */}
+          <a
+            href="https://fusionmapper.kanchandrones.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button size="sm">Login</Button>
+          </a>
+
         </nav>
         <MobileMenu className="ml-auto lg:hidden cursor-pointer" />
       </header>
