@@ -5,15 +5,13 @@ import { MobileMenu } from "@/components/mobile-menu";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
-  // const navItems = ["Resources", "Platform", "Solution", "Work", "Pricing"];
-  const navItems = ["Platform", "Solution", "Work", "Pricing"]; 
+  const navItems = ["Platform", "Solution", "Work", "Pricing"];
 
   const sectionMap: Record<string, string> = {
     solution: "services",
@@ -36,7 +34,11 @@ export const Header = () => {
       setTimeout(() => {
         const element = document.getElementById(targetSection);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
+          if ((window as any).lenis) {
+            (window as any).lenis.scrollTo(element);
+          } else {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
         }
       }, 100);
     }
@@ -44,11 +46,11 @@ export const Header = () => {
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    item: string
+    item: string,
   ) => {
     const lowerItem = item.toLowerCase();
 
-    if (lowerItem === "resources" || lowerItem === "work") {
+    if (lowerItem === "work") {
       return;
     }
 
@@ -58,7 +60,11 @@ export const Header = () => {
     if (pathname === "/") {
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        if ((window as any).lenis) {
+          (window as any).lenis.scrollTo(element);
+        } else {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       }
     } else {
       sessionStorage.setItem("scrollToSection", sectionId);
@@ -69,9 +75,6 @@ export const Header = () => {
   const getHref = (item: string) => {
     const lowerItem = item.toLowerCase();
 
-    if (lowerItem === "resources") {
-      return "/blog-resources";
-    }
     if (lowerItem === "work") {
       return "/work";
     }
@@ -81,27 +84,27 @@ export const Header = () => {
     if (pathname !== "/") {
       return `/#${sectionId}`;
     }
-    return `#${sectionId}`;
+    return "/";
   };
 
   return (
-    <div className="fixed z-50 pt-4 md:pt-10 top-0 left-0 w-full pointer-events-none">
+    <div className="fixed z-50 pt-3 sm:pt-4 md:pt-10 top-0 left-0 w-full pointer-events-none">
       <header
-        className={`grid grid-cols-[auto_1fr_auto] items-center transition-all duration-300 ease-out pointer-events-auto ${
+        className={`grid grid-cols-[auto_1fr_auto] items-center transition-all duration-300 ease-out pointer-events-auto mx-auto ${
           scrolled
-            ? "mx-auto max-w-7xl backdrop-blur-3xl border border-border rounded-2xl px-6 py-3 shadow-lg"
-            : "container"
+            ? "w-[92%] sm:w-full max-w-7xl backdrop-blur-3xl border border-border rounded-2xl px-3 py-2 sm:px-6 sm:py-3 shadow-lg"
+            : "w-full container"
         }`}
       >
-        <Link href="/" className="flex items-center gap-x-4">
+        <Link href="/" className="flex items-center gap-x-2 sm:gap-x-4">
           <Image
             src="/assets/kd-logo.svg"
             alt="Kanchan Drones"
             width={60}
             height={60}
-            className="w-12 h-12"
+            className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
           />
-          <span className=" text-2xl font-bold text-white font-mono uppercase tracking-tight">
+          <span className="text-sm sm:text-lg md:text-2xl font-bold text-white font-mono uppercase tracking-tight">
             Kanchan Drones
           </span>
         </Link>
@@ -116,17 +119,6 @@ export const Header = () => {
               {item}
             </Link>
           ))}
-          <Link href="/">
-            <Button size="sm">Login</Button>
-          </Link> 
-          {/* <a
-            href="https://fusionmapper.kanchandrones.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button size="sm">Login</Button>
-          </a> */}
-
         </nav>
         <MobileMenu className="ml-auto lg:hidden cursor-pointer" />
       </header>
