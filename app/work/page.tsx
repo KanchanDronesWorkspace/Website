@@ -10,10 +10,17 @@ import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { WorkBackground } from "@/components/work-background";
 import { projects } from "./data/projects";
+import { useRouter } from "next/navigation";
 
 export default function WorkPage() {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const router = useRouter();
+
+  const handleNavClick = (sectionId: string) => {
+    sessionStorage.setItem("scrollToSection", sectionId);
+    router.push("/");
+  };
 
   return (
     <div className="min-h-screen relative">
@@ -37,12 +44,16 @@ export default function WorkPage() {
             <p className="text-primary font-mono text-sm md:text-base uppercase tracking-wider mb-4">
               Our Portfolio
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-sentient mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-editorial mb-6">
               Explore Our <br />
-              <span className="font-sentient not-italic">3D Reconstructions</span>
+              <span className="font-editorial not-italic">
+                3D Reconstructions
+              </span>
             </h1>
             <p className="text-white/50 font-mono text-sm md:text-base max-w-2xl mx-auto leading-relaxed mb-10">
-            Select a project below to explore interactive 3D reconstructions created from aerial drone imagery. Navigate through high-fidelity Gaussian Splats, created with highest precision.
+              Select a project below to explore interactive 3D reconstructions
+              created from aerial drone imagery. Navigate through high-fidelity
+              Gaussian Splats, created with highest precision.
             </p>
 
             <div className="relative inline-block w-full max-w-md mx-auto">
@@ -133,12 +144,12 @@ export default function WorkPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-3xl font-sentient text-center mb-12"
+            className="text-2xl md:text-3xl font-editorial text-center mb-12"
           >
-            Models <span className="font-sentient">Available</span>
+            Models <span className="font-editorial">Available</span>
           </motion.h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -168,8 +179,8 @@ export default function WorkPage() {
                       </div>
                     </div>
 
-                    <div className="p-6 md:p-8">
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                    <div className="p-4 sm:p-6 md:p-8">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
                         {project.name}
                       </h3>
                       <p className="text-white/40 text-sm font-mono mb-4">
@@ -220,7 +231,7 @@ export default function WorkPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-sentient mb-4">
+            <h2 className="text-3xl md:text-4xl font-editorial mb-4">
               Ready to See Your Project in 3D?
             </h2>
             <p className="text-white/50 font-mono text-sm max-w-xl mx-auto mb-8">
@@ -228,14 +239,18 @@ export default function WorkPage() {
               transform your next project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/#contact">
-                <Button className="w-full sm:w-auto">Contact us</Button>
-              </Link>
-              <Link href="/#services">
-                <Button className="w-full sm:w-auto bg-transparent border-white/30 hover:bg-white/5">
-                  View Services
-                </Button>
-              </Link>
+              <Button
+                className="w-full sm:w-auto"
+                onClick={() => handleNavClick("contact")}
+              >
+                Contact us
+              </Button>
+              <Button
+                className="w-full sm:w-auto bg-transparent border-white/30 hover:bg-white/5"
+                onClick={() => handleNavClick("services")}
+              >
+                View Services
+              </Button>
             </div>
           </motion.div>
         </div>

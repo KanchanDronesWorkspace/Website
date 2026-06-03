@@ -12,7 +12,7 @@ export function LoadingScreen({
   projectName = "3D Model",
 }: LoadingScreenProps) {
   return (
-    <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="text-center max-w-md px-6">
         <motion.p
           className="text-white/50 text-sm md:text-base mb-8"
