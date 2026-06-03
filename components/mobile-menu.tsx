@@ -16,14 +16,7 @@ export const MobileMenu = ({ className }: MobileMenuProps) => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const navItems = [
-    "Home",
-    // "Resources",
-    "Solution",
-    "Platform",
-    "Work",
-    "Pricing",
-  ];
+  const navItems = ["Home", "Solution", "Platform", "Work", "Pricing"];
 
   const sectionMap: Record<string, string> = {
     home: "home",
@@ -34,12 +27,12 @@ export const MobileMenu = ({ className }: MobileMenuProps) => {
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    item: string
+    item: string,
   ) => {
     const lowerItem = item.toLowerCase();
     setIsOpen(false);
 
-    if (lowerItem === "resources" || lowerItem === "work") {
+    if (lowerItem === "work") {
       return;
     }
 
@@ -50,7 +43,11 @@ export const MobileMenu = ({ className }: MobileMenuProps) => {
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
+          if ((window as any).lenis) {
+            (window as any).lenis.scrollTo(element);
+          } else {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
         }
       }, 150);
     } else {
@@ -62,9 +59,6 @@ export const MobileMenu = ({ className }: MobileMenuProps) => {
   const getHref = (item: string) => {
     const lowerItem = item.toLowerCase();
 
-    if (lowerItem === "resources") {
-      return "/blog-resources";
-    }
     if (lowerItem === "work") {
       return "/work";
     }
@@ -74,7 +68,7 @@ export const MobileMenu = ({ className }: MobileMenuProps) => {
     if (pathname !== "/") {
       return `/#${sectionId}`;
     }
-    return `#${sectionId}`;
+    return "/";
   };
 
   return (
@@ -83,7 +77,7 @@ export const MobileMenu = ({ className }: MobileMenuProps) => {
         <button
           className={cn(
             "group lg:hidden p-2 text-foreground transition-colors",
-            className
+            className,
           )}
           aria-label="Open menu"
         >
