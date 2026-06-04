@@ -52,8 +52,8 @@ export default function ProjectViewerPage() {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
         <div className="text-center p-6">
-          <div className="text-6xl mb-6">😕</div>
-          <h1 className="text-2xl font-sentient text-white mb-2">
+          <div className="text-6xl mb-6"></div>
+          <h1 className="text-2xl font-editorial text-white mb-2">
             Project Not Found
           </h1>
           <p className="text-white/50 mb-8">
@@ -87,7 +87,7 @@ export default function ProjectViewerPage() {
       {error && project && (
         <div className="absolute inset-0 flex items-center justify-center z-50 bg-black/90">
           <div className="text-center p-6">
-            <div className="text-4xl mb-4">⚠️</div>
+            <div className="text-4xl mb-4"></div>
             <h3 className="text-xl font-medium text-white mb-2">
               Failed to Load Model
             </h3>
@@ -125,18 +125,20 @@ export default function ProjectViewerPage() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="absolute top-0 left-0 right-0 z-30 p-4 md:p-6"
+          className="absolute top-0 left-0 right-0 z-30 p-3 sm:p-4 md:p-6"
         >
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <Link href="/work">
-                <button className="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors">
-                  <ArrowLeft className="w-5 h-5 text-white" />
+                <button className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors">
+                  <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </button>
               </Link>
 
-              <div className="bg-black/60 backdrop-blur-md rounded-xl px-4 py-2 border border-white/10">
-                <h1 className="text-white font-medium">{project.name}</h1>
+              <div className="bg-black/60 backdrop-blur-md rounded-xl px-3 py-1.5 sm:px-4 sm:py-2 border border-white/10">
+                <h1 className="text-white font-medium text-sm sm:text-base">
+                  {project.name}
+                </h1>
                 <p className="text-white/40 text-xs font-mono">
                   {project.location}
                 </p>
@@ -145,8 +147,8 @@ export default function ProjectViewerPage() {
 
             <div className="flex items-center gap-2">
               <div className="relative group">
-                <button className="h-10 px-4 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center gap-2 hover:bg-white/10 transition-colors">
-                  <span className="text-white text-sm font-mono">
+                <button className="h-8 sm:h-10 px-2 sm:px-4 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center gap-2 hover:bg-white/10 transition-colors">
+                  <span className="text-white text-sm font-mono hidden sm:inline">
                     Switch Model
                   </span>
                   <svg
@@ -186,27 +188,27 @@ export default function ProjectViewerPage() {
 
               <button
                 onClick={() => setIsCarousel(!isCarousel)}
-                className={`w-10 h-10 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors ${
+                className={`w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors ${
                   isCarousel
                     ? "text-primary border-primary/30"
                     : "text-white/60"
                 }`}
                 title="Toggle auto-rotate"
               >
-                <RotateCw className="w-5 h-5" />
+                <RotateCw className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
               <button
                 onClick={() => setShowHelp(!showHelp)}
-                className="w-10 h-10 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors text-white/60"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors text-white/60"
                 title="Show controls"
               >
-                <Info className="w-5 h-5" />
+                <Info className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
               <Link href="/">
-                <button className="w-10 h-10 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors text-white/60">
-                  <Home className="w-5 h-5" />
+                <button className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors text-white/60">
+                  <Home className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </Link>
             </div>
@@ -219,7 +221,7 @@ export default function ProjectViewerPage() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}
-          className="absolute top-20 right-4 md:right-6 z-40 w-72"
+          className="absolute top-16 sm:top-20 right-3 sm:right-4 md:right-6 z-40 w-60 sm:w-72"
         >
           <div className="bg-black/80 backdrop-blur-md rounded-xl p-4 border border-white/10">
             <div className="flex items-center justify-between mb-4">
@@ -267,15 +269,15 @@ export default function ProjectViewerPage() {
         >
           <div className="bg-black/50 backdrop-blur-sm rounded-full px-5 py-2.5 flex items-center gap-4 text-xs text-white/60 border border-white/5">
             <span className="flex items-center gap-2">
-              <span className="text-primary">🖱️</span> Drag to rotate
+              <span className="text-primary"></span> Drag to rotate
             </span>
             <span className="w-px h-3 bg-white/20" />
             <span className="flex items-center gap-2">
-              <span className="text-primary">🔍</span> Scroll to zoom
+              <span className="text-primary"></span> Scroll to zoom
             </span>
             <span className="w-px h-3 bg-white/20" />
             <span className="flex items-center gap-2">
-              <span className="text-primary">⌨️</span> WASD to move
+              <span className="text-primary"></span> WASD to move
             </span>
           </div>
         </motion.div>

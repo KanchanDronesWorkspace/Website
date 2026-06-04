@@ -36,7 +36,7 @@ export function ViewerControls({
         <div className="bg-black/60 backdrop-blur-md rounded-xl p-4 md:p-5 border border-white/10 max-w-xs md:max-w-sm">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h1 className="text-lg md:text-xl font-sentient text-white leading-tight">
+              <h1 className="text-lg md:text-xl font-editorial text-white leading-tight">
                 {project.name}
               </h1>
               <p className="text-xs md:text-sm text-white/50 mt-1">

@@ -1,95 +1,23 @@
 "use client";
-
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const pathname = usePathname();
-  const router = useRouter();
-
-  const footerItems = [
-    "Home",
-    // "Resources",
-    "Platform",
-    "Solution",
-    "Work",
-    "Pricing",
-  ];
-
-  // Map nav items to actual section IDs (same as header)
-  const sectionMap: Record<string, string> = {
-    home: "home",
-    solution: "services",
-    platform: "features",
-    pricing: "contact",
-  };
-
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    item: string
-  ) => {
-    const lowerItem = item.toLowerCase();
-
-    // Skip for page routes
-    if (lowerItem === "resources" || lowerItem === "work") {
-      return;
-    }
-
-    e.preventDefault();
-    const sectionId = sectionMap[lowerItem] || lowerItem;
-
-    if (pathname === "/") {
-      // Same page - smooth scroll directly
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    } else {
-      // Different route - store target and navigate
-      sessionStorage.setItem("scrollToSection", sectionId);
-      router.push("/");
-    }
-  };
-
-  const getHref = (item: string) => {
-    const lowerItem = item.toLowerCase();
-
-    if (lowerItem === "resources") {
-      return "/blog-resources";
-    }
-    if (lowerItem === "work") {
-      return "/work";
-    }
-
-    const sectionId = sectionMap[lowerItem] || lowerItem;
-
-    if (pathname !== "/") {
-      return `/#${sectionId}`;
-    }
-    return `#${sectionId}`;
-  };
+  const EMAIL_ADDRESS = "info@kanchandrones.com"
 
   return (
-    <footer className="py-12 border-t border-border relative bg-background">
-      <div className="container">
-        <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8">
-          {footerItems.map((item) => (
-            <Link
-              key={item}
-              href={getHref(item)}
-              onClick={(e) => handleNavClick(e, item)}
-              className="font-mono text-sm text-foreground/60 hover:text-foreground/100 transition-colors duration-150"
-            >
-              {item}
-            </Link>
-          ))}
-        </nav>
+    <footer className="pt-2 pb-12 overflow-hidden  border-t border-white/5">
+      <div className="w-full">
+        <div className="relative mb-8 pt-12">
+          <h2 className="text-[11vw] font-footer text-white/[0.1] uppercase leading-none  text-center whitespace-nowrap select-none">
+            KANCHAN DRONES
+          </h2>
+        </div>
 
-        <div className="text-center font-mono text-sm text-foreground/60">
-          © {currentYear} Kanchan Drones |{" "}
-          <a href="mailto:info@kanchandrones.com">info@kanchandrones.com</a> |
-          All rights reserved | Made in India
+        <div className=" flex-col md:flex-row gap-4">
+          <div className="text-[10px] font-mono text-white/20 uppercase tracking-[0.2em] text-center">
+            © {currentYear} Kanchan Drones |{" "}
+            <a href={`mailto:${EMAIL_ADDRESS}`}>{EMAIL_ADDRESS}</a> |
+            All rights reserved | Made in India
+          </div>
         </div>
       </div>
     </footer>
